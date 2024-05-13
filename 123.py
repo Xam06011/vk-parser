@@ -36,7 +36,7 @@ class VKParser:
                 'q': DOMAIN,
                 'city': city_id ,
                 'age_from': age_from,
-                'count': 20
+                'count': 10
                 })
 
         
@@ -65,7 +65,7 @@ class VKParser:
             return
         self.parsebout(user_ids)
                 
-    def parsebout(self, user_ids):
+    async def parsebout(self, user_ids):
 
         user_ids = [str(element) for element in user_ids]
 
@@ -79,10 +79,10 @@ class VKParser:
         params={'access_token': self.TOKEN,
                 'v': self.VERSION,
                 'user_ids': user_ids,
-                'fields': ['about', 'has_photo', 'relatives', 'personal', 'city', 'photo_400_orig', 'schools']
+                'fields': ['about', 'has_photo','universities', 'relatives', 'personal', 'city', 'photo_400_orig', 'schools']
                 })
 
-        print(json.dumps([470101470, 419020778, 275717499]))
+        # print(json.dumps([470101470, 419020778, 275717499]))
         print(response.json()['response'])
 
         data = response.json()['response']
@@ -102,4 +102,4 @@ vk = VKParser(TOKEN_USER)
 
 
 
-vk.parse_by_user('Иван', 'Москва', None)
+vk.parse_by_user('Котикова', 'Ярославль', None)
