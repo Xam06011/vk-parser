@@ -1,12 +1,13 @@
 import json
 import requests
+import asyncio
 class VKParser:
     def __init__(self, TOKEN):
         self.TOKEN = TOKEN 
         self.VERSION = 5.199 #версися api vk
         return None
     
-    def get_city_by_name(self, city):
+    async def get_city_by_name(self, city):
 
         response = requests.get('https://api.vk.com/method/database.getCities',
         params={'access_token': self.TOKEN,
@@ -22,12 +23,12 @@ class VKParser:
         return city_id
 
 
-    def parse_by_user(self, user_name, city, age_from):
+    async def parse_by_user(self, user_name, city, age_from):
         DOMAIN = user_name #ваш domain
         city_id = None
         # Получаем id города
         if city != None:
-            city_id = self.get_city_by_name(city)
+            city_id = await self.get_city_by_name(city)
 
         # через api vk вызываем статистику постов
         response = requests.get('https://api.vk.com/method/users.search',
@@ -63,7 +64,7 @@ class VKParser:
         else:
             print("Wall is empty")
             return
-        self.parsebout(user_ids)
+        await self.parsebout(user_ids)
                 
     async def parsebout(self, user_ids):
 
@@ -101,5 +102,10 @@ TOKEN_USER = "vk1.a.k6y1UpSOvI-3eb6Av_MnqbMGnA9RL-EP7eDFEBcmvt7rxX9vmFOLrRbpclc8
 vk = VKParser(TOKEN_USER)
 
 
+async def main():
 
-vk.parse_by_user('Котикова', 'Ярославль', None)
+    await vk.parse_by_user('Котикова', 'Ярославль', None)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
