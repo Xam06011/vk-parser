@@ -7,24 +7,27 @@ class Parser:
         self.VERSION = 5.199
 
     async def cityGet(self, city):
-        response = requests.get('https://api.vk.com/method/database.getCities',
-        params={'access_token': self.TOKEN,
-                'v': self.VERSION,
-                'q': city,
-                'count' : 1
-                })
+            response = requests.get('https://api.vk.com/method/database.getCities',
+            params={'access_token': self.TOKEN,
+                    'v': self.VERSION,
+                    'q': city,
+                    'count' : 1
+                    })
+            
+            # print(response.json())
+
+            city_id = response.json()['response']['items'][0]['id']
+
+            return city_id
         
-        # print(response.json())
-
-        city_id = response.json()['response']['items'][0]['id']
-
-        return city_id
     
     async def userSearch(self, q, city_name = None, age_from = None, age_to = None):
         if city_name != None:
             city_id = await self.cityGet(city_name)
         else:
             city_id = None
+        
+        print(q, city_id, city_name)
 
         response = requests.get('https://api.vk.com/method/users.search',
         params={'access_token': self.TOKEN,
