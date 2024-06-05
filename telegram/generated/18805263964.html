@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .nav-container {
+            /* max-width: 1050px; */
+
+
+
+            width: 100%;
+            margin: auto;
+
+        }
+
+        .navbar {
+            width: 100%;
+            box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+        }
+
+        .nav-container {
+            display: flex;
+            z-index: 2;
+            justify-content: space-between;
+            align-items: center;
+            height: 62px;
+        }
+
+        .navbar .menu-items {
+            display: flex;
+        }
+
+        .navbar .nav-container li {
+            list-style: none;
+        }
+
+        .navbar .nav-container a {
+            text-decoration: none;
+            color: #0e2431;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 0.7rem;
+        }
+
+        .navbar .nav-container a:hover {
+            font-weight: bolder;
+        }
+
+        .nav-container {
+            display: block;
+            position: relative;
+            height: 60px;
+        }
+
+        .nav-container .checkbox {
+            position: absolute;
+            display: block;
+            height: 32px;
+            width: 32px;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .nav-container .hamburger-lines {
+            display: block;
+            height: 26px;
+            width: 32px;
+            position: absolute;
+            top: 17px;
+            left: 20px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-container .hamburger-lines .line {
+            display: block;
+            height: 4px;
+            width: 100%;
+            border-radius: 10px;
+            background: #0e2431;
+        }
+
+        .nav-container .hamburger-lines .line1 {
+            transform-origin: 0% 0%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .nav-container .hamburger-lines .line2 {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .nav-container .hamburger-lines .line3 {
+            transform-origin: 0% 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .navbar .menu-items {
+            padding-top: 120px;
+            box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+            background-color: #fff;
+
+            z-index: 2;
+
+            height: 100vh;
+            width: 100%;
+            transform: translate(-150%);
+            display: flex;
+            flex-direction: column;
+            margin-left: -40px;
+            padding-left: 50px;
+            transition: transform 0.5s ease-in-out;
+            text-align: center;
+        }
+
+        .navbar .menu-items li {
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .logo {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-size: 1.2rem;
+            color: #0e2431;
+        }
+
+        .nav-container input[type="checkbox"]:checked~.menu-items {
+            transform: translateX(0);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+            transform: rotate(45deg);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+            transform: scaleY(0);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+            transform: rotate(-45deg);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.logo {
+            display: none;
+        }
+
+
+
+        nav {
+            margin-bottom: 50px;
+        }
+    </style>
+
+    <style>
+        .container{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            
+        
+            align-items: center;
+        }
+        
+        .header{
+            font-size: 50px;
+            text-align: center;
+        }
+        
+        .user_info{
+            display: flex;
+        
+            width: 80%;
+        
+            justify-content: space-around;
+        }
+        
+        .bio{
+            font-size: 20px;
+        }
+        
+        .bio > .name{
+            font-size: 50px;
+        }
+        
+        .container > div {
+            margin-bottom: 20px;
+        }
+        
+        .wall{
+        
+            
+        
+            width: 80%;
+        }
+        
+        .attachments{
+            width: 45%;
+        }
+        
+        .photos{
+            width: 80%;
+        }
+        
+        .photos .swiper1{
+            height: 100%;
+            overflow: hidden;
+
+        }
+        
+        .swiper{
+            min-width: 100px;
+            height: 100%;
+        
+        
+            /* z-index: -1; */
+        }
+        
+        .swiper .swiper-wrapper{
+            text-align: center;
+            width: 70%;
+            height: 100%;
+        
+        }
+        
+        .swiper-slide{
+            width: 100%;
+            /* height: 100%; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+
+            
+        }
+        
+        iframe{
+            height: 100%;
+        }
+        
+        .image-video{
+            width: 100%;
+            height: 100%;
+        }
+        
+        .post{
+            height: 100%;
+            display: flex;
+        
+            /* flex-direction: column; */
+            /* display: grid; */
+        
+            justify-content: space-between;
+            
+        }
+
+        .swiper-wrapper{
+            top: -20%;
+            text-align: center;
+
+        }
+
+        .swiper-pagination{
+            position: relative;
+        }
+        
+        
+        .text{
+        
+            display: flex;
+            flex-direction: column;
+        
+            height: 100%;
+            width: 60%;
+
+        
+            height: 500px;
+            margin-left: 20px;
+            margin-right: 20px;
+        
+            justify-content: space-between;
+
+            
+        }
+        
+        .post{
+            margin-top: 40px;
+        }
+        
+        .post .attachments {
+        
+            align-self: center;
+        }
+        
+        .post .reactions {
+            justify-content: flex-end;
+        
+            width: 30%;
+        
+            display: flex;
+            flex-direction: row;
+        
+            justify-content: space-between;
+        }
+        
+        .post .reactions .reacts{
+        
+            /* margin: px; */
+        
+            display: flex;
+            flex-direction: row;
+        
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .post .reactions .reacts .date {
+            justify-self: flex-end;
+        }
+
+        .swiper-slide {
+            height: 100%;
+        }
+
+        .swiper-slide > img{
+            height: 100%;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    
+
+
+
+
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="navbar">
+            <div class="nav-container">
+                <input class="checkbox" type="checkbox" name="test" id="test" />
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <div class="logo">
+                    <h1>Mr. Robot</h1>
+                </div>
+                <div class="menu-items">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">blogs</a></li>
+                    <li><a href="#">portfolio</a></li>
+                    <li><a href="#">contact</a></li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <p class="header">
+            Данные пользователя:
+
+        </p>
+        <div class="user_info">
+            <div class="image">
+                <img src="https://sun1-25.userapi.com/s/v1/ig2/TR0eJo77YrNiyt2jiopnALSug5tiMxaYYArm0R7QtB6pmHnCD24q-t5eLb-R6sotXKPB4vc-WPksmLQYrFjX2Ofx.jpg?size=400x512&amp;quality=96&amp;crop=80,117,597,765&amp;ava=1"
+                    alt="Аватарка">
+            </div>
+
+            <div class="bio">
+                <p class="name">
+                    Bers Polonkoev
+                </p>
+
+                <p class="id">
+                    ID: 346598810
+                </p>
+
+                <div class="domain">
+                    Короткое имя (domain): 
+                    bersnakx
+                     
+                </div>
+
+                <p class="about">
+                    Описание:  
+                    Не указан
+                   
+                </p>
+
+
+                <p class="city">
+                    Город: 
+                    Magas
+                    
+                </p>
+
+                <p class="education">
+                    Место обучения: 
+                    РТУ МИРЭА
+                    
+                </p>
+
+                <p class="friends">
+                    Друзья: 255
+                </p>
+
+                <p class="groups">
+                    Группы: 255
+                </p>
+
+                <p class="languages">
+                    Языки: 
+                    
+                        Русский, 
+                    
+                        English, 
+                    
+                        ГIалгIай мотт, 
+                    
+                    
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="header">
+            Фото со стены:
+        </p>
+
+        <div class="photos">
+            <!-- <div class="swiper"> -->
+                <div class="swiper1">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-54.userapi.com/impf/c837122/v837122810/df98/LlGfOYqsWCs.jpg?size=960x716&amp;quality=96&amp;sign=e06665b3ba522e83f11a71ab2d7f2b06&amp;c_uniq_tag=95nCl2Vn3-EdjNgVll_Mg-qvcFs_qsE4Sijuz4SEzws&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-20.userapi.com/impf/c837122/v837122810/dfa1/JVyct6A25lo.jpg?size=960x716&amp;quality=96&amp;sign=009aede3c011f1d55e2bb72cc2d04f9c&amp;c_uniq_tag=LwohzQTkMmcRmP_jp_r2pzobPzR6EwcWzsKMOzbNHKg&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-80.userapi.com/impf/c837122/v837122810/dfbc/lVlTHjgyCwo.jpg?size=960x716&amp;quality=96&amp;sign=cae81024b6e58d03aa5bf8236bedb2e0&amp;c_uniq_tag=yFAy20qrKUmaCCOT-I9Y6UGo1Pq4wG0GecuX9hCUGSU&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-5.userapi.com/impf/c837122/v837122810/dfb3/5qwPp3RoYlg.jpg?size=960x716&amp;quality=96&amp;sign=553b8ebda0323b550efcc5182c8337fc&amp;c_uniq_tag=rrOsmr_oSadlkwPAMEY-ITGmfeImytwzrtGo9erFTlI&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-1.userapi.com/impf/c837122/v837122810/dfc5/cNMyLlNCftg.jpg?size=960x716&amp;quality=96&amp;sign=d44bc089acf271e798cc2f6e1fd04d80&amp;c_uniq_tag=_mpP_z29twdw08uK4wXuAqIiRahYdQ7uIvTkv9ooM14&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-12.userapi.com/impf/c837122/v837122810/dfd7/AX4l9qCD0F4.jpg?size=960x716&amp;quality=96&amp;sign=058cab2682527a351bd57bc99cf56f7c&amp;c_uniq_tag=PB-6E16sd-KWcX4-rLcavPMIWboo9mA72FL3WjKiQn8&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-41.userapi.com/impf/c837122/v837122810/dfe0/HGN0XGl84_w.jpg?size=960x716&amp;quality=96&amp;sign=daff737b8688b82f4459eb69eb784c9e&amp;c_uniq_tag=swpheQ3jgZFK9-mSTlqyx1fFLeEV0DlrsbVRkCi_R7A&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-16.userapi.com/impf/c847219/v847219085/10c19f/naQFTnw_uCs.jpg?size=200x200&amp;quality=96&amp;sign=2dc385cd8bc62a772871c5ecd5f208e4&amp;c_uniq_tag=KTPQyCivBKZL6qM8XL-XYwCl1mkQ1XHxggPL0Up6kIY&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-78.userapi.com/impf/c844521/v844521148/13e862/eLeB_gRn3Ew.jpg?size=960x958&amp;quality=96&amp;sign=4035f1fd89faa9dc56b873d3464635d2&amp;c_uniq_tag=P09Phi56fuLmxwZTpO5Xeed8fmXaaJJzehMsJtcU1yM&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-25.userapi.com/impf/c850220/v850220714/a9eb4/X3BcJ1cOTYI.jpg?size=720x960&amp;quality=96&amp;sign=753a90a02e2af70d9f8fe722a19009f7&amp;c_uniq_tag=JPYqafvWu4n7Q5jCpv8zerO5NDl1fsb51kyxn493W7E&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-23.userapi.com/impf/c846121/v846121752/1a34a2/LVT2p_VGVyU.jpg?size=810x1080&amp;quality=96&amp;sign=1373e2594adf149a065971cfcc11946b&amp;c_uniq_tag=2BPSfytBUEVOBFsTakrM32qpIOjnfTzlJi6HCiYKY-I&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-39.userapi.com/impf/c850724/v850724536/ea952/5u212-l_26I.jpg?size=640x629&amp;quality=96&amp;sign=0056d9f2b2295e2dfc9eb8f361af3f7b&amp;c_uniq_tag=O9ZmV_0D85Pibnk9TlchFURmzkW1Ux3AFlO6ja7XZT0&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-22.userapi.com/impf/tB4PfdbLACvjjwZFT2OAyA1Qo_s37iv1ERLmTA/5VYO32JB4dY.jpg?size=480x480&amp;quality=96&amp;sign=156eaebd37df23ad8b24b193a467c979&amp;c_uniq_tag=mOOwXHVy8EquaLY8rMeFyEHrM81YWSqEKDcd1BO23ak&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-23.userapi.com/impf/c853428/v853428289/10911d/cuftdLky8S8.jpg?size=1280x960&amp;quality=96&amp;sign=c87291029c24c8ac6d5405f7e2c2e1cd&amp;c_uniq_tag=NKSRhn1F_o0y_EmjmrGdrhD_3xI_IbCQDF9OLg95mlo&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-4.userapi.com/impf/c857632/v857632289/8bb6f/LbAielVw2Hk.jpg?size=1280x960&amp;quality=96&amp;sign=758c8dfe2b37e22753ae1fd261c2b454&amp;c_uniq_tag=FoYeYGWBIygJL07q9yrh8EWZtxas8irrWMNStGyQheU&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-67.userapi.com/impf/c857416/v857416655/93e08/2bgWN12jTm0.jpg?size=810x1080&amp;quality=96&amp;sign=24856ceece9470c488209e659a9f4704&amp;c_uniq_tag=gY_Xf1J1rLIrYaAcvk01zd7HxmbSlZt3CM4EQZGpE6c&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-35.userapi.com/impg/PjZ5wv0Mbu0yIr3OkYVv90UPBmqbMTN464yz-Q/HiKfk-kdnsA.jpg?size=1280x720&amp;quality=96&amp;sign=2423c36905d9bd714b07b0750573b7b8&amp;c_uniq_tag=IPQW929LdwECU8yqHDyD0dJWplgxbZIBC7AEGcvoTOI&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-35.userapi.com/impg/QeT8Smvk-gQexTtbhsl6EGnJAmhGKAsxeRWf9w/-g36hdyQ_5A.jpg?size=1280x960&amp;quality=96&amp;sign=66d6d980f3f6bdb2701abf33023e26ed&amp;c_uniq_tag=dYcKeRwxvoZs7aZDm119d_Us5nBh7yzP-7qrjDsQurE&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-30.userapi.com/impg/KmQQ1WZdQitrHLQEjfIAAXl7UPbAs4xXu0u-bA/_0NHVDjvt1M.jpg?size=1280x960&amp;quality=96&amp;sign=76c5041f1bc74079cae3ec21e9c6e8f6&amp;c_uniq_tag=sok3FVyjepYbiFH5cPC4V1HHYFwfI6nEgMGHeuGJaHo&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-8.userapi.com/impg/REI_ej1SHmdw60G_2krdpNZdQzaCP_Sgh2Kesw/v68B_wIQQj8.jpg?size=1280x720&amp;quality=96&amp;sign=0ef7dbab009e3697898532e79c0911f7&amp;c_uniq_tag=_0deme8lQbBmoIjgSuwfhlWUU3gfBA8p-Wldy6ZlVvU&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-72.userapi.com/impg/dKEQ129QECbghl8QtvvO-bjTrmVYvPi5IXib9A/01UXQI4gGug.jpg?size=1280x720&amp;quality=96&amp;sign=65a0d2b2d4291132a283e525ae42d722&amp;c_uniq_tag=aM41URjA8ujKsXlHb9MXlv_rMZx5X7xCBVOySAoZtjA&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-12.userapi.com/impg/wREhFJ4KzKC8rmfxQx-6dupsl7AA2qyhz8LZHg/nq_OolrUKmM.jpg?size=1280x720&amp;quality=96&amp;sign=71b873585a5db20279e65e2be2c9afd7&amp;c_uniq_tag=70WhlvwMdVcMpFBI7Tne_4zsZ-6QwIgFTi6fMpCsNCE&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun9-26.userapi.com/impg/xRSuBonJvaHhZ-P3PxG9WZsfWlT1NVCPUV80vw/cRKRNPNA56E.jpg?size=1280x720&amp;quality=96&amp;sign=1da09b517f24b72bc5f44cf8aac93846&amp;c_uniq_tag=kUZxj_-HDGiaiZOyLp5eoBhMk2v8llNjiBNKe_64kso&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                            <div class="swiper-slide image-photo">
+    
+                                <img src="https://sun1-13.userapi.com/impg/eFP6dVxqJkF5W-Xf0_kWTDZvskDNItggWQOhew/FSypwyZUsg4.jpg?size=809x1080&amp;quality=96&amp;sign=7559d0340e990fafb1eab97b8d0e6e44&amp;c_uniq_tag=s1jUJbwkCKwXNVlSbSHwZy9FcwAe-u-HbrfqpK0eNBQ&amp;type=album"
+                                    alt="">
+                                    
+    
+                                
+                            </div>
+                        
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination" style="position :relative"></div>
+    
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev" style="top: 80%;"></div>
+                    <div class="swiper-button-next" style="top: 80%;"></div>
+    
+                    <!-- If we need scrollbar -->
+                    <!-- <div class="swiper-scrollbar"></div> -->
+                <!-- </div> -->
+            </div>
+            
+
+        </div>
+
+
+        <p class="header">
+            Записи на странице:
+        </p>
+
+        <div class="wall">
+
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                            Котдаьлар вай.
+
+Бийса баьде ма йоагIий, 
+Ва Iаьржа ва бийса, 
+Дарз хьекхаш ма латтий, 
+Ва шийла ва дарз. 
+ 
+Хьо кхера ма кхера, 
+Ва майра ва дог, 
+Хьо доха ма доха, 
+Ва кура ва дог! 
+ 
+Топа тата ма хозий, 
+Ва унзара ва тата, 
+Юрташ йоагаш ма латтий 
+Цу яьннача ва цIерах. 
+ 
+Хьо кхера ма кхера, 
+Ва майра ва дог, 
+Хьо доха ма доха, 
+Ва кура ва дог! 
+ 
+Юрта гобаь ма латтий 
+Цу моастагIа ва бIу, 
+КIантий легаш ма латтий 
+Цу моастагIа ва карах. 
+ 
+Хьо делха ма делха, 
+Ва гIийла ва дог, 
+Хьо дека ма дека, 
+Ва маьлхара ва дог!
+
+Мальсагова Фатима.
+
+#Тхьовре_стихи
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            3
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            696
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1653257102
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=1200x800&amp;quality=96&amp;sign=4aa8e124f9a6a815d43875b8106a382a&amp;c_uniq_tag=cZV9tzuC6_d-sy_UzrrFQ2k9M9zMiTaeQ-FgXn-zlS0&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+
+        const photo_swiper = new Swiper('.swiper1', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            //scrollbar: {
+            //  el: '.photo-swiper-scrollbar',
+            //},
+        });
+
+        function toDateTime(secs) {
+            var t = new Date(1970, 0, 1); // Epoch
+            t.setSeconds(secs);
+            return t;
+        }
+
+
+
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            //scrollbar: {
+              //  el: '.swiper-scrollbar',
+            //},
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>

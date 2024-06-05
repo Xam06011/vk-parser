@@ -1,4 +1,6 @@
 import requests
+from jinja2 import Environment, PackageLoader, select_autoescape
+import random
 
 class Parser:
     
@@ -13,8 +15,6 @@ class Parser:
                     'q': city,
                     'count' : 1
                     })
-            
-            # print(response.json())
 
             city_id = response.json()['response']['items'][0]['id']
 
@@ -51,10 +51,62 @@ class Parser:
         params={'access_token': self.TOKEN,
                 'v': self.VERSION,
                 'user_ids': user_ids,
-                'fields': ['about', 'has_photo','universities', 'relatives', 'personal', 'city', 'photo_400_orig', 'schools','photo_200_orig']
+                'fields': 'about, domain, photo_200_orig, photo_400_orig, city, personal, universities'
                 })
         
-        print(response.json())
+        # print(response.json())
         
         return response.json()
+    
+    
+    async def wallGet(self, owner_id = ""):
+        
+        response = requests.get('https://api.vk.com/method/wall.get',
+        params={'access_token': self.TOKEN,
+                'v': self.VERSION,
+                'owner_id': owner_id,
+                'count': 10
+                })
+        
+        # print(response.json())
+        
+        return response.json()["response"]["items"]
+    
+    async def photosGet(self, owner_id = ""):
+        response = requests.get('https://api.vk.com/method/photos.get',
+        params={'access_token': self.TOKEN,
+                'v': self.VERSION,
+                'owner_id': owner_id,
+                'album_id': 'wall'
+                })
+        
+        # print(response.json())
+        
+        return response.json()["response"]["items"]
+    
+    async def genereteHtml(self, user_id):
+        data = await self.userGet(user_ids=user_id)
+        items = await self.wallGet(user_id)
+        photos = await self.photosGet(user_id)
+        
+        env = Environment(
+        loader=PackageLoader('html', 'templates'),
+        autoescape=select_autoescape(['html'])
+        )
+
+        template = env.get_template('index.html')
+        
+        print(data)
+        
+        result = template.render(data = data["response"][0], items = items, photos = photos)
+        
+        filename = random.randint(1000000000, 999999999999)
+        
+        with open(f'./generated/{filename}.html', 'w') as fp: 
+            fp.write(result)
+        
+        return f"{filename}.html"
+    
+    async def userGetAll():
+        pass
         

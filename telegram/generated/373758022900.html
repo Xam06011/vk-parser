@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .nav-container {
+            /* max-width: 1050px; */
+
+
+
+            width: 100%;
+            margin: auto;
+
+        }
+
+        .navbar {
+            width: 100%;
+            box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+        }
+
+        .nav-container {
+            display: flex;
+            z-index: 2;
+            justify-content: space-between;
+            align-items: center;
+            height: 62px;
+        }
+
+        .navbar .menu-items {
+            display: flex;
+        }
+
+        .navbar .nav-container li {
+            list-style: none;
+        }
+
+        .navbar .nav-container a {
+            text-decoration: none;
+            color: #0e2431;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 0.7rem;
+        }
+
+        .navbar .nav-container a:hover {
+            font-weight: bolder;
+        }
+
+        .nav-container {
+            display: block;
+            position: relative;
+            height: 60px;
+        }
+
+        .nav-container .checkbox {
+            position: absolute;
+            display: block;
+            height: 32px;
+            width: 32px;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .nav-container .hamburger-lines {
+            display: block;
+            height: 26px;
+            width: 32px;
+            position: absolute;
+            top: 17px;
+            left: 20px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-container .hamburger-lines .line {
+            display: block;
+            height: 4px;
+            width: 100%;
+            border-radius: 10px;
+            background: #0e2431;
+        }
+
+        .nav-container .hamburger-lines .line1 {
+            transform-origin: 0% 0%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .nav-container .hamburger-lines .line2 {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .nav-container .hamburger-lines .line3 {
+            transform-origin: 0% 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .navbar .menu-items {
+            padding-top: 120px;
+            box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+            background-color: #fff;
+
+            z-index: 2;
+
+            height: 100vh;
+            width: 100%;
+            transform: translate(-150%);
+            display: flex;
+            flex-direction: column;
+            margin-left: -40px;
+            padding-left: 50px;
+            transition: transform 0.5s ease-in-out;
+            text-align: center;
+        }
+
+        .navbar .menu-items li {
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .logo {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-size: 1.2rem;
+            color: #0e2431;
+        }
+
+        .nav-container input[type="checkbox"]:checked~.menu-items {
+            transform: translateX(0);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+            transform: rotate(45deg);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+            transform: scaleY(0);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+            transform: rotate(-45deg);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.logo {
+            display: none;
+        }
+
+
+        nav {
+            margin-bottom: 50px;
+        }
+    </style>
+
+    <style>
+        .container{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            
+        
+            align-items: center;
+        }
+        
+        .header{
+            font-size: 50px;
+            text-align: center;
+        }
+        
+        .user_info{
+            display: flex;
+        
+            width: 80%;
+        
+            justify-content: space-around;
+        }
+        
+        .bio{
+            font-size: 20px;
+        }
+        
+        .bio > .name{
+            font-size: 50px;
+        }
+        
+        .container > div {
+            margin-bottom: 20px;
+        }
+        
+        .wall{
+        
+            
+        
+            width: 80%;
+        }
+        
+        .attachments{
+            width: 45%;
+        }
+        
+        .photos{
+            width: 80%;
+        }
+        
+        .photos .swiper1{
+            height: 100%;
+            overflow: hidden;
+
+        }
+        
+        .swiper{
+            min-width: 100px;
+            height: 100%;
+        
+        
+            /* z-index: -1; */
+        }
+        
+        .swiper .swiper-wrapper{
+            text-align: center;
+            height: 100%;
+        
+        }
+        
+        .swiper-slide{
+            width: 100%;
+            /* height: 100%; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+
+            
+        }
+        
+        iframe{
+            height: 100%;
+        }
+        
+        .image-video{
+            width: 100%;
+            height: 100%;
+        }
+        
+        .post{
+            height: 100%;
+            display: flex;
+        
+            /* flex-direction: column; */
+            /* display: grid; */
+        
+            justify-content: space-between;
+            
+        }
+
+        .swiper-wrapper{
+            top: -20%;
+            text-align: center;
+
+        }
+
+        .swiper-pagination{
+            position: relative;
+        }
+        
+        
+        .text{
+        
+            display: flex;
+            flex-direction: column;
+        
+            height: 100%;
+        
+            height: 500px;
+            margin-left: 20px;
+            margin-right: 20px;
+        
+            justify-content: space-between;
+            
+        }
+        
+        .post{
+            margin-top: 40px;
+        }
+        
+        .post .attachments {
+        
+            align-self: center;
+        }
+        
+        .post .reactions {
+            justify-content: flex-end;
+        
+            width: 30%;
+        
+            display: flex;
+            flex-direction: row;
+        
+            justify-content: space-between;
+        }
+        
+        .post .reactions .reacts{
+        
+            /* margin: px; */
+        
+            display: flex;
+            flex-direction: row;
+        
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .post .reactions .reacts .date {
+            justify-self: flex-end;
+        }
+
+        .swiper-slide {
+            height: 100%;
+        }
+
+        .swiper-slide > img{
+            height: 100%;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    
+
+
+
+
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="navbar">
+            <div class="nav-container">
+                <input class="checkbox" type="checkbox" name="test" id="test" />
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <div class="logo">
+                    <h1>Mr. Robot</h1>
+                </div>
+                <div class="menu-items">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">blogs</a></li>
+                    <li><a href="#">portfolio</a></li>
+                    <li><a href="#">contact</a></li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <p class="header">
+            Данные пользователя:
+
+        </p>
+        <div class="user_info">
+            <div class="image">
+                <img src="https://sun1-19.userapi.com/s/v1/if1/me6SXha-TpJUowBoNxyf7GZw7cQ12v6lPStVNcxB9wBv2MyfGET94ZgdTEQNfNHE5YMbdpW7.jpg?size=400x400&amp;quality=96&amp;crop=0,0,480,480&amp;ava=1"
+                    alt="Аватарка">
+            </div>
+
+            <div class="bio">
+                <p class="name">
+                    Bers Targimov
+                </p>
+
+                <p class="id">
+                    ID: 243533733
+                </p>
+
+                <div class="domain">
+                    Короткое имя (domain): 
+                    id243533733
+                     
+                </div>
+
+                <p class="about">
+                    Описание:  
+                    Не указан
+                   
+                </p>
+
+
+                <p class="city">
+                    Город: 
+                    Magas
+                    
+                </p>
+
+                <p class="education">
+                    Место обучения:  
+                    Не указан
+                   
+                </p>
+
+                <p class="friends">
+                    Друзья: 255
+                </p>
+
+                <p class="groups">
+                    Группы: 255
+                </p>
+
+                <p class="languages">
+                    Языки: 
+                    
+                        ГIалгIай мотт, 
+                    
+                    
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="header">
+            Фото со стены:
+        </p>
+
+        <div class="photos">
+            <!-- <div class="swiper"> -->
+                <div class="swiper1">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination" style="position :relative"></div>
+    
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev" style="top: 80%;"></div>
+                    <div class="swiper-button-next" style="top: 80%;"></div>
+    
+                    <!-- If we need scrollbar -->
+                    <!-- <div class="swiper-scrollbar"></div> -->
+                <!-- </div> -->
+            </div>
+            
+
+        </div>
+
+
+        <p class="header">
+            Записи на странице:
+        </p>
+
+        <div class="wall">
+
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            27
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            5
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1472498821
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun9-80.userapi.com/impf/c626525/v626525633/25614/5mgvSG2ekQU.jpg?size=800x800&amp;quality=96&amp;sign=d802c445bf5136cc2ef837f3fae6cf3d&amp;c_uniq_tag=7A4FSCqb77kaij7yb4OPM99zjAbc4mPWAJDlEzuN5bY&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            5
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            304
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1652610076
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+
+                                        
+                                            <iframe src="" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                        
+                                        
+                                    
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            Мой комментарий
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            3
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            2
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            134
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1618224842
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun9-31.userapi.com/impg/wBsAK-iD1j2t0cY7yQ5oWXF4ppejecemeSk4lg/T6PQcYOxlyg.jpg?size=1280x1280&amp;quality=96&amp;sign=798b5b647da6c6ef52e22d20f182a5cc&amp;c_uniq_tag=yHnz-9_IdOCkTz3LkPlG-e7dUwDrhoxD27b9Yiq3m2E&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                                <div class="swiper-slide image">
+
+                                    
+
+                                        
+                                        
+                                    
+
+                                    
+                                </div>
+                            
+                                <div class="swiper-slide image">
+
+                                    
+
+                                        
+                                        
+                                    
+
+                                    
+                                </div>
+                            
+                                <div class="swiper-slide image">
+
+                                    
+
+                                        
+                                        
+                                    
+
+                                    
+                                </div>
+                            
+                                <div class="swiper-slide image">
+
+                                    
+
+                                        
+                                        
+                                    
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            2
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            1
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            136
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1570633267
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            2
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            147
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1558718007
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun9-55.userapi.com/impf/c850736/v850736967/dfbc4/jfT-hqU0xf0.jpg?size=1077x1080&amp;quality=96&amp;sign=a739380b393cfced1e1b61abceccd3e7&amp;c_uniq_tag=UiqahxFfgr9fyYM-g1ttg1Xq-M6jHHxleEcgSZ0UBZE&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            Сохраню как будто читаю книги
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            130
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1556762180
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun1-25.userapi.com/impf/c855336/v855336773/337d8/8ORzY2gT7f8.jpg?size=1280x912&amp;quality=96&amp;sign=4a949d581ad29640bcf2a9583508a949&amp;c_uniq_tag=PnQo6h6IZzLXuSazl_cqioMcXPhFyT2D2X-DXpsR5DY&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            4
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            110
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1553854723
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+
+                                        
+                                            <iframe src="" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                        
+                                        
+                                    
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            3
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            109
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1551009896
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun9-16.userapi.com/impf/c849320/v849320887/136af2/5oOENupIA10.jpg?size=1080x1080&amp;quality=96&amp;sign=ac205d489261b6be9f5073627c4ebf1c&amp;c_uniq_tag=kytwrXDOMh0eD3JCSlA7NyJ0yjJu_r5dHySuyJkq3ug&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            2
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            104
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1546973854
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+            <div class="post">
+
+                <div class="text">
+
+                    <div class="caption">
+                        <span class="text-span">
+                            
+                        </span>
+
+                    </div>
+
+                    <div class="reactions">
+                        <span class="reacts likes">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16 4a5.95 5.95 0 0 0-3.89 1.7l-.12.11-.12-.11A5.96 5.96 0 0 0 7.73 4 5.73 5.73 0 0 0 2 9.72c0 3.08 1.13 4.55 6.18 8.54l2.69 2.1c.66.52 1.6.52 2.26 0l2.36-1.84.94-.74c4.53-3.64 5.57-5.1 5.57-8.06A5.73 5.73 0 0 0 16.27 4zm.27 1.8a3.93 3.93 0 0 1 3.93 3.92v.3c-.08 2.15-1.07 3.33-5.51 6.84l-2.67 2.08a.04.04 0 0 1-.04 0L9.6 17.1l-.87-.7C4.6 13.1 3.8 11.98 3.8 9.73A3.93 3.93 0 0 1 7.73 5.8c1.34 0 2.51.62 3.57 1.92a.9.9 0 0 0 1.4-.01c1.04-1.3 2.2-1.91 3.57-1.91z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        <span class="reacts reposts">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 3.73c-1.12.07-2 1-2 2.14v2.12h-.02a9.9 9.9 0 0 0-7.83 10.72.9.9 0 0 0 1.61.46l.19-.24a9.08 9.08 0 0 1 5.84-3.26l.2-.03.01 2.5a2.15 2.15 0 0 0 3.48 1.69l7.82-6.14a2.15 2.15 0 0 0 0-3.38l-7.82-6.13c-.38-.3-.85-.46-1.33-.46zm.15 1.79c.08 0 .15.03.22.07l7.82 6.14a.35.35 0 0 1 0 .55l-7.82 6.13a.35.35 0 0 1-.57-.28V14.7a.9.9 0 0 0-.92-.9h-.23l-.34.02c-2.28.14-4.4.98-6.12 2.36l-.17.15.02-.14a8.1 8.1 0 0 1 6.97-6.53.9.9 0 0 0 .79-.9V5.87c0-.2.16-.35.35-.35z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            1
+                        </span>
+                        <span class="reacts comments">
+                            <svg height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M16.9 4H7.1c-1.15 0-1.73.11-2.35.44-.56.3-1 .75-1.31 1.31C3.11 6.37 3 6.95 3 8.1v5.8c0 1.15.11 1.73.44 2.35.3.56.75 1 1.31 1.31l.15.07c.51.25 1.04.35 1.95.37h.25v2.21c0 .44.17.85.47 1.16l.12.1c.64.55 1.6.52 2.21-.08L13.37 18h3.53c1.15 0 1.73-.11 2.35-.44.56-.3 1-.75 1.31-1.31.33-.62.44-1.2.44-2.35V8.1c0-1.15-.11-1.73-.44-2.35a3.17 3.17 0 0 0-1.31-1.31A4.51 4.51 0 0 0 16.9 4zM6.9 5.8h9.99c.88 0 1.18.06 1.5.23.25.13.44.32.57.57.17.32.23.62.23 1.5v6.16c-.02.61-.09.87-.23 1.14-.13.25-.32.44-.57.57-.32.17-.62.23-1.5.23h-4.02a.9.9 0 0 0-.51.26l-3.47 3.4V17.1c0-.5-.4-.9-.9-.9H6.74a2.3 2.3 0 0 1-1.14-.23 1.37 1.37 0 0 1-.57-.57c-.17-.32-.23-.62-.23-1.5V7.74c.02-.61.09-.87.23-1.14.13-.25.32-.44.57-.57.3-.16.58-.22 1.31-.23z"
+                                        fill="currentColor" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                            0
+                        </span>
+                        
+                        <span class="reacts views">
+                            <svg fill="none" height="16" viewBox="0 0 16 16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    <path clip-rule="evenodd"
+                                        d="M15.5 8c0-1-3-5-7.5-5S.5 7 .5 8s3 5 7.5 5 7.5-4 7.5-5zm-4 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                                        fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            118
+                            
+                        </span>
+                        
+<!-- 
+                        <span class="reacts date">
+                            1543507770
+                        </span> -->
+                    </div>
+
+                </div>
+
+
+                <div class="attachments">
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+
+                            
+
+                            
+                                <div class="swiper-slide image">
+
+                                    
+                                    <img src="https://sun9-16.userapi.com/impf/c849232/v849232577/cf2bf/M1dQ3UqtPHM.jpg?size=1280x721&amp;quality=96&amp;sign=809d4630032bd4ac3cfdfbf6242e98ef&amp;c_uniq_tag=vi3J11C-Olw9g-0oh1Cu19nrf5l_N4BUwGyHromCOOg&amp;type=album"
+                                        alt="">
+                                    
+                                        
+
+                                    
+                                </div>
+                            
+                            
+                            <!-- Slides -->
+                            <!-- <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div>
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+                                <iframe src="https://vk.com/video_ext.php?oid=-175517353&id=456244904&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                                <iframe class="image-video" height="1000" width="100%" src="https://vk.com/video-175517353_456244904" frameborder="0" allowfullscreen>HZ</iframe>
+                                <video class="video1"  controls="controls" src="https://www.youtube.com/watch?v=uuOXPWCh-6o&ab_channel=Fireship" poster="img/vbg01.png"  playsinline="true" webkit-playsinline="true"  preload="auto"></video>
+                                <iframe src="https://vk.com/video_ext.php?oid=-222872084&id=456239311&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="swiper-slide image">
+                                <img src="https://sun9-52.userapi.com/impf/c637120/v637120208/51228/zrFDHyWQ91I.jpg?size=807x538&quality=96&sign=ec8d52456577f662c50bbe2d9baf8324&c_uniq_tag=73kAZPOVMxW5k0kb6_HIQ3NjgFzNhmycpmDuXCoXMP4&type=album"
+                                    alt="">
+
+                            </div> -->
+                            
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <!-- <div class="swiper-scrollbar"></div> -->
+                    </div>
+                </div>
+
+
+            </div>
+    
+            
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+
+        const photo_swiper = new Swiper('.swiper1', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            //scrollbar: {
+            //  el: '.photo-swiper-scrollbar',
+            //},
+        });
+
+        function toDateTime(secs) {
+            var t = new Date(1970, 0, 1); // Epoch
+            t.setSeconds(secs);
+            return t;
+        }
+
+
+
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            //scrollbar: {
+              //  el: '.swiper-scrollbar',
+            //},
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>

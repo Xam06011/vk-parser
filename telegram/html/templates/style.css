@@ -1,0 +1,142 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    
+
+    align-items: center;
+}
+
+.header{
+    font-size: 50px;
+    text-align: center;
+}
+
+.user_info{
+    display: flex;
+
+    width: 80%;
+
+    justify-content: space-around;
+}
+
+.bio{
+    font-size: 20px;
+}
+
+.bio > .name{
+    font-size: 50px;
+}
+
+.container > div {
+    margin-bottom: 20px;
+}
+
+.wall{
+
+    
+
+    width: 80%;
+}
+
+.attachments{
+    width: 45%;
+}
+
+
+.photos{
+    width: 100%;
+}
+
+.swiper{
+    min-width: 100px;
+    height: 100%;
+
+
+    /* z-index: -1; */
+}
+
+.swiper .swiper-wrapper{
+    text-align: center;
+    height: 100%;
+
+}
+
+.swiper-slide{
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+iframe{
+    height: 100%;
+}
+
+.image-video{
+    width: 100%;
+    height: 100%;
+}
+
+.post{
+    height: 100%;
+    display: flex;
+
+    /* flex-direction: column; */
+    /* display: grid; */
+
+    justify-content: space-between;
+    
+}
+
+
+.text{
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    height: 500px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    justify-content: space-between;
+    
+}
+
+.post{
+    margin-top: 40px;
+}
+
+.post .attachments {
+
+    align-self: center;
+}
+
+.post .reactions {
+    justify-content: flex-end;
+
+    width: 30%;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+.post .reactions .reacts{
+
+    /* margin: px; */
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post .reactions .reacts .date {
+    justify-self: flex-end;
+}

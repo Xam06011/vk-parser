@@ -18,6 +18,8 @@ from aiogram.fsm.state import StatesGroup, State
 import vparser
 import config
 
+import time
+
 TOKEN = "7167534352:AAFLLQN-jHa-VAxVEg7mSJIQMQASKLGsxo8"
 dp = Dispatcher()
 
@@ -26,6 +28,9 @@ class ChangeCallback(CallbackData, prefix="ch_mess"):
     index: int
     id : int 
 
+class SendReport(CallbackData, prefix="report"):
+    foo: str
+    id: str
 
 @dp.callback_query(ChangeCallback.filter(F.foo == "ch_mess"))
 async def changeMessage(callback: CallbackQuery, callback_data: ChangeCallback):
@@ -37,12 +42,21 @@ async def changeMessage(callback: CallbackQuery, callback_data: ChangeCallback):
     for i in range(len(kb.__dict__["inline_keyboard"][0])):
         item = kb.__dict__["inline_keyboard"][0][i]
         cb = item.callback_data.split(":")[-1]
-        print(cb)
-        print(item)
+        # print(cb)
+        # print(item)
         if cb == str(callback_data.id):
             item.text = f"-{i+1}-"
+            print(kb.__dict__["inline_keyboard"][1][0])
+            print(cb)
+            kb.__dict__["inline_keyboard"][1][0].id=cb
+            print(kb.__dict__["inline_keyboard"][1][0].callback_data)
+            ind = kb.__dict__["inline_keyboard"][1][0].callback_data.rfind(":")
+            kb.__dict__["inline_keyboard"][1][0].callback_data = kb.__dict__["inline_keyboard"][1][0].callback_data[:ind+1] + str(cb)
+            print(kb.__dict__["inline_keyboard"][1][0].callback_data)
         else:
             item.text = f"{i+1}"
+    
+    
 
     await callback.answer('')
     await callback.message.edit_media(inline_message_id=str(callback.message.message_id), media= types.InputMediaPhoto(media=res['response'][0]["photo_200_orig"]) )
@@ -50,6 +64,23 @@ async def changeMessage(callback: CallbackQuery, callback_data: ChangeCallback):
                                         reply_markup=kb,parse_mode="HTML")
 
     pass
+
+@dp.callback_query(SendReport.filter(F.foo == "report"))
+async def changeMessage(callback: CallbackQuery, callback_data: SendReport, bot: Bot):
+    
+    chat_id = callback.message.chat.id
+    
+    
+    
+    data = await parser.genereteHtml(callback_data.id)
+    
+    file = types.FSInputFile(f'generated/{data}')
+    
+    result = await bot.send_document(
+        chat_id=chat_id, document= file,
+        caption=f'Актуальный на <b>{time.strftime("%d-%m-%Y", time.localtime())}</b>')
+    return result
+
 
 
 def users_keyboard(data, id = None):
@@ -65,7 +96,8 @@ def users_keyboard(data, id = None):
                 )
         builder.row(types.InlineKeyboardButton(
                         text="Получить полный отчет о странице",
-                        callback_data="1"
+                        id=data[0],
+                        callback_data=SendReport(foo="report", id=data[0]).pack()
                     ))
         return builder.as_markup()
     except TypeError as err:
@@ -92,7 +124,29 @@ class ChooseData(StatesGroup):
     choosing_data_age_from = State()
     choosing_data_age_to = State()
     FIND_MATCHES = State()
+
+class ReportState(StatesGroup):
+    report_id = State()
+
+@dp.message(F.text.lower().contains("получить отчет по id") or Command("find"))
+async def get_report(message: Message, state: FSMContext):
+    await message.answer("Введите ID пользователя для получения отчета")
     
+    await state.set_state(ReportState.report_id)
+    
+
+@dp.message(ReportState.report_id, F.text.func(len) >= 4)
+async def q_chosen(message: Message, state: FSMContext):
+    data = await parser.genereteHtml(message.text)
+    
+    file = types.FSInputFile(f'generated/{data}')
+    
+    result = await message.answer_document( document= file,
+        caption=f'Актуальный на <b>{time.strftime("%d-%m-%Y", time.localtime())}</b>')
+    
+    state.finish()
+    
+    return result
 
 
 @dp.message(F.text.lower().contains("начать поиск") or Command("find"))
@@ -145,7 +199,7 @@ async def echo_handler(message: Message, state: FSMContext):
         await message.answer_photo(
             photo= user["response"][0]["photo_200_orig"], 
 
-            caption=f'<b><a href="vk.com/id{user['response'][0]['id']}">{user['response'][0]['first_name'] + ' ' + user['response'][0]['last_name']}</a></b>\n\n<a href="vk.com/id">Получить отчет по странице</a>', 
+            caption=f'<b><a href="vk.com/id{user['response'][0]['id']}">{user['response'][0]['first_name'] + ' ' + user['response'][0]['last_name']}</a></b>', 
 
             reply_markup=users_keyboard(res),
             
